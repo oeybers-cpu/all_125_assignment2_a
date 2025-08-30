@@ -15,14 +15,15 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            background: linear-gradient(135deg, #f8f5f0 0%, #e8eaf1 100%);
             min-height: 100vh;
         }
 
         .header {
-            background: white;
+            background: #00205B; /* UP dark blue */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid #e5e7eb;
+            color: white;
         }
 
         .header-content {
@@ -43,12 +44,12 @@
         .header-title h1 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #1f2937;
+            color: white;
         }
 
         .badge {
-            background: #f3f4f6;
-            color: #6b7280;
+            background: #FF8200; /* UP orange */
+            color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 0.375rem;
             font-size: 0.875rem;
@@ -92,12 +93,12 @@
 
         .tab-button.active {
             background: white;
-            color: #1f2937;
+            color: #00205B; /* UP dark blue */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .tab-button:hover {
-            color: #1f2937;
+            color: #00205B; /* UP dark blue */
         }
 
         .tab-content {
@@ -122,7 +123,7 @@
         .card-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #1d4ed8;
+            color: #00205B; /* UP dark blue */
             margin-bottom: 0.5rem;
         }
 
@@ -181,7 +182,7 @@
         }
 
         .text-blue-700 {
-            color: #1d4ed8;
+            color: #00205B; /* UP dark blue */
         }
 
         .border-l-4 {
@@ -190,7 +191,7 @@
         }
 
         .border-blue-500 {
-            border-left-color: #3b82f6;
+            border-left-color: #00205B; /* UP dark blue */
         }
 
         .border-green-500 {
@@ -198,7 +199,7 @@
         }
 
         .border-yellow-500 {
-            border-left-color: #f59e0b;
+            border-left-color: #FF8200; /* UP orange */
         }
 
         .border-purple-500 {
@@ -206,7 +207,7 @@
         }
 
         .bg-blue-50 {
-            background-color: #eff6ff;
+            background-color: #e6eff9; /* Light blue tint */
         }
 
         .bg-gray-50 {
@@ -287,8 +288,8 @@
 
         .textarea:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #00205B; /* UP dark blue */
+            box-shadow: 0 0 0 3px rgba(0, 32, 91, 0.1);
         }
 
         .button {
@@ -306,12 +307,12 @@
         }
 
         .button-primary {
-            background: #3b82f6;
+            background: #00205B; /* UP dark blue */
             color: white;
         }
 
         .button-primary:hover {
-            background: #2563eb;
+            background: #001235; /* Darker blue */
         }
 
         .button-primary:disabled {
@@ -363,7 +364,7 @@
         }
 
         .blockquote {
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid #00205B; /* UP dark blue */
             padding-left: 1rem;
             font-style: italic;
             color: #4b5563;
@@ -374,6 +375,51 @@
             width: 1rem;
             height: 1rem;
             display: inline-block;
+        }
+
+        .article-link {
+            display: inline-block;
+            background: #00205B; /* UP dark blue */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 1rem 0;
+        }
+
+        .article-link:hover {
+            background: #001235; /* Darker blue */
+        }
+
+        .tips-container {
+            background: #FF8200; /* UP orange */
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .tips-container h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .tips-list {
+            list-style-type: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tips-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -476,11 +522,11 @@
                             <div class="grid grid-cols-2">
                                 <div>
                                     <h5 class="font-medium text-blue-700">Part A: Essay</h5>
-                                    <p style="font-size: 0.875rem; color: #1d4ed8;">Analyze author's argument and reflect from personal/academic perspective</p>
+                                    <p style="font-size: 0.875rem; color: #00205B;">Analyze author's argument and reflect from personal/academic perspective</p>
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-blue-700">Part B: GenAI Image</h5>
-                                    <p style="font-size: 0.875rem; color: #1d4ed8;">Generate image capturing theme or personal response with translanguaging</p>
+                                    <p style="font-size: 0.875rem; color: #00205B;">Generate image capturing theme or personal response with translanguaging</p>
                                 </div>
                             </div>
                         </div>
@@ -565,6 +611,7 @@
                                 together students, youth activists, academics, policymakers, and civil society organizations to address 
                                 GBV challenges and develop youth-centered solutions.
                             </p>
+                            <a href="#" class="article-link">Read the Full Article: "Sweden on the road: Empowering South Africa's next generation"</a>
                             <div class="blockquote">
                                 "Young people are not just the future, they are the present. Their courage, energy and creativity are 
                                 what will move societies forward." - Elisabeth Hårleman, Swedish Embassy
@@ -572,110 +619,42 @@
                         </div>
 
                         <div id="gv-questions">
-                            <h3 class="text-lg font-semibold text-gray-800">Interactive Questions</h3>
+                            <h3 class="text-lg font-semibold text-gray-800">Analytical Questions</h3>
                             
                             <div class="question-card">
-                                <h4 class="question-title">1. What is the main purpose of the "Sweden on the Road" initiative?</h4>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv1a" name="gv1" value="a">
-                                        <label for="gv1a">To promote Swedish culture in South Africa</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv1b" name="gv1" value="b">
-                                        <label for="gv1b">To empower young leaders in fighting Gender-Based Violence</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv1c" name="gv1" value="c">
-                                        <label for="gv1c">To establish trade relationships between countries</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv1d" name="gv1" value="d">
-                                        <label for="gv1d">To provide scholarships for South African students</label>
-                                    </div>
-                                </div>
+                                <h4 class="question-title">1. What types of evidence does the author use to support the claim that youth leadership is central to addressing gender-based violence? Consider whether the evidence is statistical, anecdotal, institutional (e.g., referencing the National Strategic Plan), or testimonial (e.g., quotes from officials). How does this shape the credibility of the argument?</h4>
+                                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
 
                             <div class="question-card">
-                                <h4 class="question-title">2. According to the article, which groups were brought together for this dialogue?</h4>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv2a" name="gv2" value="a">
-                                        <label for="gv2a">Only university students and professors</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv2b" name="gv2" value="b">
-                                        <label for="gv2b">Students, youth activists, academics, policymakers, and civil society organizations</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv2c" name="gv2" value="c">
-                                        <label for="gv2c">Government officials and international diplomats only</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv2d" name="gv2" value="d">
-                                        <label for="gv2d">Swedish and South African business leaders</label>
-                                    </div>
-                                </div>
+                                <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.g., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
+                                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
 
                             <div class="question-card">
-                                <h4 class="question-title">3. What does Elisabeth Hårleman's quote suggest about the role of young people?</h4>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv3a" name="gv3" value="a">
-                                        <label for="gv3a">Young people should wait until they are older to make a difference</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv3b" name="gv3" value="b">
-                                        <label for="gv3b">Young people are currently capable of driving social change</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv3c" name="gv3" value="c">
-                                        <label for="gv3c">Young people need more education before contributing</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv3d" name="gv3" value="d">
-                                        <label for="gv3d">Young people should focus only on their studies</label>
-                                    </div>
-                                </div>
+                                <h4 class="question-title">3. In what ways does the article appeal to cultural values or shared histories between South Africa and Sweden? Identify references to "historic partnership," "shared commitment," or "global advocacy." How do these cultural and diplomatic appeals reinforce the message and invite reader alignment?</h4>
+                                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
 
                             <div class="question-card">
-                                <h4 class="question-title">4. How does this initiative connect local action to international frameworks?</h4>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv4a" name="gv4" value="a">
-                                        <label for="gv4a">It focuses only on local South African issues</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv4b" name="gv4" value="b">
-                                        <label for="gv4b">It links to the National Strategic Plan on GBVF 2020-2030 and G20 Women's Empowerment agenda</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv4c" name="gv4" value="c">
-                                        <label for="gv4c">It operates independently of any strategic plans</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" id="gv4d" name="gv4" value="d">
-                                        <label for="gv4d">It only follows Swedish policies</label>
-                                    </div>
-                                </div>
+                                <h4 class="question-title">4. Which emotional appeals are used to engage the reader, and how do they function within the broader argument? Pay attention to language that evokes hope, urgency, or pride—especially in phrases like "empowering young leaders" or "solutions to South Africa's toughest challenges." How do these affect the reader's response?</h4>
+                                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
 
                             <div class="question-card">
-                                <h4 class="question-title">5. Reflect on the significance of international partnerships in addressing GBV. How might this collaboration model be applied to other social issues?</h4>
-                                <textarea id="gv5" class="textarea" placeholder="Write your reflection here (minimum 100 words)..."></textarea>
+                                <h4 class="question-title">5. How does the article position the reader in relation to the issue—are they being invited to act, reflect, or admire?</h4>
+                                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
-
-                            <button class="button button-primary" style="width: 100%;" onclick="submitGVQuiz()">Submit Answers</button>
                         </div>
 
-                        <div id="gv-results" style="display: none;">
-                            <div class="results">
-                                <h3>Quiz Results</h3>
-                                <div id="gv-results-content"></div>
-                            </div>
-                            <button class="button button-outline" onclick="resetGVQuiz()">Retake Quiz</button>
+                        <div class="tips-container">
+                            <h3>4 Key Tips for Integrating Your Analysis</h3>
+                            <ul class="tips-list">
+                                <li>Connect the evidence types to their effectiveness in supporting the argument's credibility</li>
+                                <li>Analyze how the portrayal of different groups serves the argument's persuasive purpose</li>
+                                <li>Consider how cultural and diplomatic appeals create alignment with the reader</li>
+                                <li>Reflect on how emotional appeals position the reader to respond to the issue</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -880,41 +859,6 @@
         function getSelectedValue(name) {
             const selected = document.querySelector(`input[name="${name}"]:checked`);
             return selected ? selected.value : null;
-        }
-
-        function submitGVQuiz() {
-            const answers = {
-                q1: getSelectedValue('gv1'),
-                q2: getSelectedValue('gv2'),
-                q3: getSelectedValue('gv3'),
-                q4: getSelectedValue('gv4'),
-                q5: document.getElementById('gv5').value
-            };
-
-            if (!answers.q1 || !answers.q2 || !answers.q3 || !answers.q4 || !answers.q5.trim()) {
-                alert('Please answer all questions before submitting.');
-                return;
-            }
-
-            const correctAnswers = { q1: 'b', q2: 'b', q3: 'b', q4: 'b' };
-            let resultsHTML = '';
-            
-            for (let i = 1; i <= 4; i++) {
-                const isCorrect = answers[`q${i}`] === correctAnswers[`q${i}`];
-                resultsHTML += `<p><strong>Question ${i}:</strong> ${isCorrect ? '<span class="checkmark">✓ Correct</span>' : '<span class="x-mark">✗ Incorrect</span>'} - The correct answer is B</p>`;
-            }
-            resultsHTML += '<p><strong>Question 5:</strong> Your reflection has been recorded.</p>';
-
-            document.getElementById('gv-results-content').innerHTML = resultsHTML;
-            document.getElementById('gv-questions').style.display = 'none';
-            document.getElementById('gv-results').style.display = 'block';
-        }
-
-        function resetGVQuiz() {
-            document.querySelectorAll('input[name^="gv"]').forEach(input => input.checked = false);
-            document.getElementById('gv5').value = '';
-            document.getElementById('gv-questions').style.display = 'block';
-            document.getElementById('gv-results').style.display = 'none';
         }
 
         function submitICQuiz() {
