@@ -16,6 +16,8 @@
             color: #333;
             background: linear-gradient(135deg, #f8f5f0 0%, #e8eaf1 100%);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .container {
             display: flex;
@@ -23,6 +25,7 @@
             margin: 0 auto;
             padding: 1rem;
             gap: 1.5rem;
+            flex: 1;
         }
         /* Left Navigation Column */
         .left-column {
@@ -141,6 +144,8 @@
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .header {
             background: #00205B;
@@ -169,6 +174,7 @@
         .tab-content {
             display: none;
             padding: 2rem;
+            flex: 1;
         }
         .tab-content.active {
             display: block;
@@ -411,6 +417,26 @@
             border: 1px solid #d1d5db;
             overflow-x: auto;
         }
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #00205B;
+            color: white;
+            margin-top: auto;
+            width: 100%;
+        }
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 0;
+            font-size: 0.8rem;
+        }
+        .counter-container p {
+            margin: 0 0.5rem;
+            color: #FF8200;
+        }
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .container {
@@ -421,7 +447,6 @@
                 margin-bottom: 1rem;
                 position: static;
             }
-            /* ADDED: Adjust home button for mobile */
             .home-btn {
                 position: static;
                 display: block;
@@ -791,6 +816,15 @@
         </div>
     </div>
 
+    <!-- Footer with Hit Counter -->
+    <footer>
+        <div class="counter-container">
+            <p>This page has been visited</p>
+            <div id="sfc1kbhgmxareyhrdmj7y4qfjx6ug6lqsa9"></div>
+            <p>times</p>
+        </div>
+    </footer>
+
     <script>
         let currentTab = 'session-outcomes';
         const tabs = ['session-outcomes', 'instructions', 'gender-violence', 'critical-reading', 'session-reflection', 'genai-integration'];
@@ -842,5 +876,8 @@
             showTab('session-outcomes');
         });
     </script>
+    <!-- Hit Counter Script -->
+    <script type="text/javascript" src="https://counter5.optistats.ovh/private/counter.js?c=1kbhgmxareyhrdmj7y4qfjx6ug6lqsa9&down=async" async></script>
+    <noscript><a href="https://www.freecounterstat.com" title="hit counter"><img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=1kbhgmxareyhrdmj7y4qfjx6ug6lqsa9" border="0" title="hit counter" alt="hit counter"></a></noscript>
 </body>
 </html>
