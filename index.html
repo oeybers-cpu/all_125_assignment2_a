@@ -24,6 +24,7 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid #e5e7eb;
             color: white;
+            position: relative;
         }
 
         .header-content {
@@ -546,6 +547,76 @@
             overflow-x: auto;
         }
 
+        /* Glowing Button Styles */
+        .home-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            color: #FFF;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .home-btn::after {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+        /* glow */
+        .home-btn::before {
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #FF0000, #FF7300, #FFFB00, #48FF00,
+                #00FFD5, #002BFF, #FF00C8, #FF0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 600%;
+            z-index: -1;
+            width: calc(100% + 4px);
+            height:  calc(100% + 4px);
+            filter: blur(8px);
+            animation: glowing 20s linear infinite;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+            opacity: 0;
+        }
+
+        @keyframes glowing {
+            0% {background-position: 0 0;}
+            50% {background-position: 400% 0;}
+            100% {background-position: 0 0;}
+        }
+
+        /* hover */
+        .home-btn:hover::before {
+            opacity: 1;
+        }
+
+        .home-btn:active:after {
+            background: transparent;
+        }
+
+        .home-btn:active {
+            color: #000;
+            font-weight: bold;
+        }
+
         @media (max-width: 1024px) {
             .tab-list {
                 grid-template-columns: repeat(3, 1fr);
@@ -579,6 +650,13 @@
             .genai-image {
                 max-width: 65%;
             }
+            
+            .home-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+                top: 0.5rem;
+                left: 0.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -594,10 +672,18 @@
             .genai-image {
                 max-width: 85%;
             }
+            
+            .home-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Academic Literacy Home Button -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
+
     <header class="header">
         <div class="header-content">
             <div class="header-title">
@@ -846,6 +932,7 @@
                             </div>
                         </div>
 
+                       极
                         <button class="button button-primary copy-button" onclick="copyAllResponses('critical-reading')">
                             <span class="icon">📋</span>
                             <span>Copy All Responses</span>
@@ -856,6 +943,7 @@
 
             <!-- Session Reflection Tab -->
             <div id="session-reflection" class="tab-content">
+                <极
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Session Reflection</h2>
@@ -869,13 +957,13 @@
                         <div class="question-card">
                             <h4 class="question-title">2. How does the article deepen your understanding of gender-based violence in South Africa?</h4>
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
-                        </div>
+                        </极
                         <div class="question-card">
                             <h4 class="question-title">3. In what ways does gender-based violence affect or relate to your personal identity, background, or lived experience?</h4>
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
                         </div>
                         <div class="question-card">
-                            <h4 class="question-title">4. How does your academic discipline or field of study help you interpret or respond to the issue of gender-based violence?</h4>
+                            <h4 class="question-title">4. How does your academic discipline or field of study help you interpret or respond to the issue of gender-based violence?</极
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
                         </div>
                         <button class="button button-primary copy-button" onclick="copyAllResponses('session-reflection')">
@@ -908,7 +996,7 @@
                         
                         <div class="language-section">
                             <h4>L2: English</h4>
-                            <p>If you strike a woman, you strike a nation. We all must protect women.</p>
+                            <p>If you strike a woman, you strike a nation. We all must protect women.</极
                         </div>
                         
                         <div class="citation-box">
@@ -919,7 +1007,7 @@
                             </div>
                         </div>
                         
-                        <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="bg-blue-50 p极 rounded-lg">
                             <h4 class="font-semibold text-blue-700">Assignment Requirement</h4>
                             <p>This GenAI image and translanguaging component is part of Assignment 2 requirements. The image should capture the theme of your reading reflection or your personal response to the article, accompanied by text in at least two languages.</p>
                         </div>
@@ -932,7 +1020,7 @@
             <button class="button button-outline" onclick="previousTab()">
                 <span>← Previous</span>
             </button>
-            <button class="button button-outline" onclick="nextTab()">
+            <button class="button button-outline极 onclick="nextTab()">
                 <span>Next →</span>
             </button>
         </div>
@@ -998,7 +1086,7 @@
             let allResponses = "";
             
             // Collect all responses with question numbers
-            textareas.forEach((textarea, index) => {
+            textareas.forEach((textarea, index)极 {
                 const question = textarea.closest('.question-card').querySelector('.question-title').textContent;
                 const response = textarea.value;
                 
