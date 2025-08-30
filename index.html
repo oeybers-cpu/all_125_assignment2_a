@@ -420,7 +420,7 @@
         /* Footer Styles */
         footer {
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
             background: #00205B;
             color: white;
             margin-top: auto;
@@ -428,14 +428,33 @@
         }
         .counter-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 0.5rem 0;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
         .counter-container p {
-            margin: 0 0.5rem;
+            margin: 0.25rem 0;
             color: #FF8200;
+        }
+        /* ENLARGED COUNTER - Significantly increased size */
+        .counter-wrapper {
+            font-size: 3.5rem !important; /* Increased from 0.8rem to 3.5rem - over 4x larger */
+            font-weight: bold;
+            color: #FF8200 !important;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            margin: 0.5rem 0;
+            padding: 0.5rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            min-width: 300px;
+            letter-spacing: 1px;
+        }
+        .counter-label {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
         }
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
@@ -480,6 +499,12 @@
             .tab-content {
                 padding: 1rem;
             }
+            /* Mobile counter size adjustment */
+            .counter-wrapper {
+                font-size: 2.5rem !important;
+                min-width: 250px;
+                padding: 0.4rem 1rem;
+            }
         }
         @media (max-width: 480px) {
             .nav-button {
@@ -489,6 +514,15 @@
             }
             .genai-image {
                 max-width: 85%;
+            }
+            /* Even larger relative size for small screens */
+            .counter-wrapper {
+                font-size: 2rem !important;
+                min-width: 200px;
+                padding: 0.3rem 0.8rem;
+            }
+            .counter-label {
+                font-size: 1rem;
             }
         }
     </style>
@@ -819,9 +853,11 @@
     <!-- Footer with Hit Counter -->
     <footer>
         <div class="counter-container">
-            <p>This page has been visited</p>
-            <div id="sfc1kbhgmxareyhrdmj7y4qfjx6ug6lqsa9"></div>
-            <p>times</p>
+            <div class="counter-label">Total Page Visits</div>
+            <div class="counter-wrapper">
+                <div id="sfc1kbhgmxareyhrdmj7y4qfjx6ug6lqsa9"></div>
+            </div>
+            <p>This page has been visited by students working on their academic literacy skills</p>
         </div>
     </footer>
 
