@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALL 125: Reading Reflection</title>
+    <title>Assignment 2: Reading Reflection</title>
     <style>
         * {
             margin: 0;
@@ -67,7 +67,7 @@
 
         .tab-list {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 0;
             background: #f9fafb;
             border-radius: 0.5rem;
@@ -491,6 +491,28 @@
             border-left-color: #8b5cf6;
         }
 
+        /* New styles for GenAI Integration tab */
+        .genai-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .language-section {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #FF8200;
+        }
+        
+        .language-section h4 {
+            color: #00205B;
+            margin-bottom: 0.5rem;
+        }
+
         @media (max-width: 1024px) {
             .tab-list {
                 grid-template-columns: repeat(3, 1fr);
@@ -539,7 +561,7 @@
         <div class="header-content">
             <div class="header-title">
                 <span class="icon">🏠</span>
-                <h1>ALL 125: Reading Reflection</h1>
+                <h1>Assignment 2: Reading Reflection</h1>
             </div>
             <div class="badge">Academic Year 2025</div>
         </div>
@@ -548,7 +570,7 @@
     <main class="main-content">
         <div class="tabs">
             <div class="tab-list">
-                <button class="tab-button active" onclick="showTab('session-outcomes')">
+                <button class="tab-button" onclick="showTab('session-outcomes')">
                     <span class="icon">📌</span>
                     <span>Session Outcomes</span>
                 </button>
@@ -568,10 +590,14 @@
                     <span class="icon">🧠</span>
                     <span>Session Reflection</span>
                 </button>
+                <button class="tab-button active" onclick="showTab('genai-integration')">
+                    <span class="icon">🤖</span>
+                    <span>GenAI Integration</span>
+                </button>
             </div>
 
             <!-- Session Outcomes Tab -->
-            <div id="session-outcomes" class="tab-content active">
+            <div id="session-outcomes" class="tab-content">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Session Outcomes</h2>
@@ -579,7 +605,7 @@
                     </div>
                     <div class="card-content space-y-6">
                         <ul class="space-y-2 text-gray-800 text-lg">
-                            <li>1️⃣ Identify and analyse the author's argumentative strategies in a theme-related article</li>
+                            <li>1️⃣ Identify and analyse the author's argumentative strategies in the article</li>
                             <li>2️⃣ Connect the article's themes to the broader societal issue of gender-based violence in South Africa</li>
                             <li>3️⃣ Reflect on how gender-based violence intersects with your personal identity and lived experience</li>
                             <li>4️⃣ Relate the issue of gender-based violence to your academic discipline and its approaches to social justice</li>
@@ -592,7 +618,7 @@
             <div id="instructions" class="tab-content">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Assignment 2 Reminders</h2>
+                        <h2 class="card-title">Assignment Instructions</h2>
                         <p class="card-description">Complete overview of Assignment 2: Reading Reflection requirements</p>
                     </div>
                     <div class="card-content space-y-6">
@@ -818,6 +844,37 @@
                     </div>
                 </div>
             </div>
+
+            <!-- GenAI Integration Tab -->
+            <div id="genai-integration" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">GenAI Integration</h2>
+                        <p class="card-description">Part B: GenAI Image and Translanguaging Component</p>
+                    </div>
+                    <div class="card-content space-y-6">
+                        <h3 class="text-lg font-semibold text-gray-800">Generated Image</h3>
+                        <p class="text-gray-600">This image represents the theme of gender-based violence and the importance of protecting women in society.</p>
+                        
+                        <img src="https://github.com/oeybers-cpu/all_125_assignment2_a/blob/main/Gemini_Generated_Image_oda57xoda57xoda5.png?raw=true" alt="GenAI Generated Image on Gender-Based Violence" class="genai-image">
+                        
+                        <div class="language-section">
+                            <h4>L1: Setswana</h4>
+                            <p>Motho yo o itayang mosadi, o itaya lekgwata. Go sireletsa basadi ke boikarabelo jwa rona rotlhe.</p>
+                        </div>
+                        
+                        <div class="language-section">
+                            <h4>L2: English</h4>
+                            <p>If you strike a woman, you strike a nation. We all must protect women.</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-700">Assignment Requirement</h4>
+                            <p>This GenAI image and translanguaging component is part of Assignment 2 requirements. The image should capture the theme of your reading reflection or your personal response to the article, accompanied by text in at least two languages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="navigation-buttons">
@@ -831,8 +888,8 @@
     </main>
 
     <script>
-        let currentTab = 'session-outcomes';
-        const tabs = ['session-outcomes', 'instructions', 'gender-violence', 'critical-reading', 'session-reflection'];
+        let currentTab = 'genai-integration';
+        const tabs = ['session-outcomes', 'instructions', 'gender-violence', 'critical-reading', 'session-reflection', 'genai-integration'];
 
         function showTab(tabName) {
             // Hide all tab contents
