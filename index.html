@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2: Reading Reflection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .badge {
+            background: #f3f4f6;
+            color: #6b7280;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tabs {
+            width: 100%;
+        }
+
+        .tab-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: none;
+            background: transparent;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #1f2937;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            color: #1f2937;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1d4ed8;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        .space-y-3 > * + * {
+            margin-top: 0.75rem;
+        }
+
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .text-gray-800 {
+            color: #1f2937;
+        }
+
+        .text-gray-600 {
+            color: #4b5563;
+        }
+
+        .text-blue-700 {
+            color: #1d4ed8;
+        }
+
+        .border-l-4 {
+            border-left: 4px solid;
+            padding-left: 1rem;
+        }
+
+        .border-blue-500 {
+            border-left-color: #3b82f6;
+        }
+
+        .border-green-500 {
+            border-left-color: #10b981;
+        }
+
+        .border-yellow-500 {
+            border-left-color: #f59e0b;
+        }
+
+        .border-purple-500 {
+            border-left-color: #8b5cf6;
+        }
+
+        .bg-blue-50 {
+            background-color: #eff6ff;
+        }
+
+        .bg-gray-50 {
+            background-color: #f9fafb;
+        }
+
+        .bg-amber-50 {
+            background-color: #fffbeb;
+        }
+
+        .bg-green-50 {
+            background-color: #f0fdf4;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+
+        .topic-badge {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+            border: 1px solid #d1d5db;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .question-title {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0;
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            color: #374151;
+        }
+
+        .textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .button-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #2563eb;
+        }
+
+        .button-primary:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .button-outline {
+            background: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .button-outline:hover {
+            background: #f9fafb;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .results {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .results h3 {
+            color: #166534;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .results p {
+            margin-bottom: 0.25rem;
+            color: #166534;
+        }
+
+        .checkmark {
+            color: #10b981;
+        }
+
+        .x-mark {
+            color: #ef4444;
+        }
+
+        .blockquote {
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #4b5563;
+            margin: 1rem 0;
+        }
+
+        .icon {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .tab-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title">
+                <span class="icon">🏠</span>
+                <h1>Assignment 2: Reading Reflection</h1>
+            </div>
+            <div class="badge">Academic Year 2025</div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="tabs">
+            <div class="tab-list">
+                <button class="tab-button active" onclick="showTab('instructions')">
+                    <span class="icon">📖</span>
+                    <span>Instructions</span>
+                </button>
+                <button class="tab-button" onclick="showTab('structure')">
+                    <span class="icon">✅</span>
+                    <span>Structure</span>
+                </button>
+                <button class="tab-button" onclick="showTab('gender-violence')">
+                    <span class="icon">👥</span>
+                    <span>Gender Violence</span>
+                </button>
+                <button class="tab-button" onclick="showTab('identity-culture')">
+                    <span class="icon">🌍</span>
+                    <span>Identity & Culture</span>
+                </button>
+            </div>
+
+            <!-- Instructions Tab -->
+            <div id="instructions" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Assignment Instructions</h2>
+                        <p class="card-description">Complete overview of Assignment 2: Reading Reflection requirements</p>
+                    </div>
+                    <div class="card-content space-y-6">
+                        <div class="grid grid-cols-2">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800" style="margin-bottom: 0.75rem;">Assignment Overview</h3>
+                                <ul class="space-y-2">
+                                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                        <span class="checkmark">✓</span>
+                                        <span>Four paragraph essay (maximum 800 words)</span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                        <span class="checkmark">✓</span>
+                                        <span>GenAI image and translanguaging component</span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                        <span class="checkmark">✓</span>
+                                        <span>Due: Monday, 22 September</span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                        <span class="checkmark">✓</span>
+                                        <span>Weight: 30 marks</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800" style="margin-bottom: 0.75rem;">Topic Areas</h3>
+                                <div class="space-y-2">
+                                    <span class="topic-badge">Social Inequality and Community Development</span>
+                                    <span class="topic-badge">Gender, Identity and Social Change</span>
+                                    <span class="topic-badge">Mental Health and Youth Wellbeing</span>
+                                    <span class="topic-badge">Decoloniality, Cultural Heritage, Ancestry and Identity</span>
+                                    <span class="topic-badge">Crime, Corruption and Social Trust</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-700" style="margin-bottom: 0.5rem;">Assignment Components</h4>
+                            <div class="grid grid-cols-2">
+                                <div>
+                                    <h5 class="font-medium text-blue-700">Part A: Essay</h5>
+                                    <p style="font-size: 0.875rem; color: #1d4ed8;">Analyze author's argument and reflect from personal/academic perspective</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-blue-700">Part B: GenAI Image</h5>
+                                    <p style="font-size: 0.875rem; color: #1d4ed8;">Generate image capturing theme or personal response with translanguaging</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Structure Tab -->
+            <div id="structure" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Essay Structure Guidelines</h2>
+                        <p class="card-description">Detailed breakdown of the four-paragraph essay structure</p>
+                    </div>
+                    <div class="card-content space-y-6">
+                        <div class="border-l-4 border-blue-500">
+                            <h3 class="text-lg font-semibold text-gray-800">Paragraph 1: Introduction and Overview</h3>
+                            <ul style="margin-top: 0.5rem;" class="space-y-1 text-gray-600">
+                                <li>• Introduce your chosen text (author, title, publication context, main topic)</li>
+                                <li>• Briefly explain how this text connects to your personal and academic interests</li>
+                                <li>• State your main response to the text</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500">
+                            <h3 class="text-lg font-semibold text-gray-800">Paragraph 2: Personal and Cultural Connections</h3>
+                            <ul style="margin-top: 0.5rem;" class="space-y-1 text-gray-600">
+                                <li>• Connect the text's main ideas to your personal background, cultural context, or lived experiences</li>
+                                <li>• Explain why these ideas matter to you and how they appear in or influence your own life</li>
+                                <li>• Explain how your identity shapes your perspective of this text</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500">
+                            <h3 class="text-lg font-semibold text-gray-800">Paragraph 3: Argument Analysis</h3>
+                            <ul style="margin-top: 0.5rem;" class="space-y-1 text-gray-600">
+                                <li>• Identify the author's main argument or purpose</li>
+                                <li>• Analyse specific writing strategies the author uses (evidence, appeals, structure, language choices)</li>
+                                <li>• Comment on these strategies - what works, what doesn't, and why</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500">
+                            <h3 class="text-lg font-semibold text-gray-800">Paragraph 4: Disciplinary Reflection</h3>
+                            <ul style="margin-top: 0.5rem;" class="space-y-1 text-gray-600">
+                                <li>• Connect the text to your academic discipline or broad academic interests</li>
+                                <li>• Comment on how this text might contribute to broader discussions in your field</li>
+                                <li>• Consider implications for related academic disciplines</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold" style="color: #92400e; margin-bottom: 0.5rem;">Assessment Criteria</h4>
+                            <div class="grid grid-cols-2" style="font-size: 0.875rem;">
+                                <div>
+                                    <p><strong>Engagement with text (10 marks):</strong> Nuanced understanding and deep engagement</p>
+                                    <p><strong>Personal/cultural reflection (6 marks):</strong> Insightful connections between identity and text</p>
+                                </div>
+                                <div>
+                                    <p><strong>Critical analysis (5 marks):</strong> Sophisticated analysis of argument and writing strategies</p>
+                                    <p><strong>Structure & writing (5 marks):</strong> Clear, cohesive structure with proper referencing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender Violence Tab -->
+            <div id="gender-violence" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Gender-Based Violence in South Africa</h2>
+                        <p class="card-description">Critical reading activity based on the article "Sweden on the road: Empowering South Africa's next generation"</p>
+                    </div>
+                    <div class="card-content space-y-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800" style="margin-bottom: 0.5rem;">Article Summary</h3>
+                            <p class="text-gray-600" style="margin-bottom: 1rem;">
+                                The article discusses a collaborative initiative between Sweden and South Africa to empower young leaders 
+                                in the fight against Gender-Based Violence (GBV). The "Sweden on the Road" Women's Month edition brought 
+                                together students, youth activists, academics, policymakers, and civil society organizations to address 
+                                GBV challenges and develop youth-centered solutions.
+                            </p>
+                            <div class="blockquote">
+                                "Young people are not just the future, they are the present. Their courage, energy and creativity are 
+                                what will move societies forward." - Elisabeth Hårleman, Swedish Embassy
+                            </div>
+                        </div>
+
+                        <div id="gv-questions">
+                            <h3 class="text-lg font-semibold text-gray-800">Interactive Questions</h3>
+                            
+                            <div class="question-card">
+                                <h4 class="question-title">1. What is the main purpose of the "Sweden on the Road" initiative?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv1a" name="gv1" value="a">
+                                        <label for="gv1a">To promote Swedish culture in South Africa</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv1b" name="gv1" value="b">
+                                        <label for="gv1b">To empower young leaders in fighting Gender-Based Violence</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv1c" name="gv1" value="c">
+                                        <label for="gv1c">To establish trade relationships between countries</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv1d" name="gv1" value="d">
+                                        <label for="gv1d">To provide scholarships for South African students</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">2. According to the article, which groups were brought together for this dialogue?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv2a" name="gv2" value="a">
+                                        <label for="gv2a">Only university students and professors</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv2b" name="gv2" value="b">
+                                        <label for="gv2b">Students, youth activists, academics, policymakers, and civil society organizations</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv2c" name="gv2" value="c">
+                                        <label for="gv2c">Government officials and international diplomats only</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv2d" name="gv2" value="d">
+                                        <label for="gv2d">Swedish and South African business leaders</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">3. What does Elisabeth Hårleman's quote suggest about the role of young people?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv3a" name="gv3" value="a">
+                                        <label for="gv3a">Young people should wait until they are older to make a difference</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv3b" name="gv3" value="b">
+                                        <label for="gv3b">Young people are currently capable of driving social change</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv3c" name="gv3" value="c">
+                                        <label for="gv3c">Young people need more education before contributing</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv3d" name="gv3" value="d">
+                                        <label for="gv3d">Young people should focus only on their studies</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">4. How does this initiative connect local action to international frameworks?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv4a" name="gv4" value="a">
+                                        <label for="gv4a">It focuses only on local South African issues</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv4b" name="gv4" value="b">
+                                        <label for="gv4b">It links to the National Strategic Plan on GBVF 2020-2030 and G20 Women's Empowerment agenda</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv4c" name="gv4" value="c">
+                                        <label for="gv4c">It operates independently of any strategic plans</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="gv4d" name="gv4" value="d">
+                                        <label for="gv4d">It only follows Swedish policies</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">5. Reflect on the significance of international partnerships in addressing GBV. How might this collaboration model be applied to other social issues?</h4>
+                                <textarea id="gv5" class="textarea" placeholder="Write your reflection here (minimum 100 words)..."></textarea>
+                            </div>
+
+                            <button class="button button-primary" style="width: 100%;" onclick="submitGVQuiz()">Submit Answers</button>
+                        </div>
+
+                        <div id="gv-results" style="display: none;">
+                            <div class="results">
+                                <h3>Quiz Results</h3>
+                                <div id="gv-results-content"></div>
+                            </div>
+                            <button class="button button-outline" onclick="resetGVQuiz()">Retake Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Identity & Culture Tab -->
+            <div id="identity-culture" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Identity, Culture & Heritage in South African Higher Education</h2>
+                        <p class="card-description">Exploring the role of cultural identity and heritage in academic contexts</p>
+                    </div>
+                    <div class="card-content space-y-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800" style="margin-bottom: 0.5rem;">Context</h3>
+                            <p class="text-gray-600" style="margin-bottom: 1rem;">
+                                South African higher education operates within a complex landscape of cultural diversity, historical legacy, 
+                                and ongoing transformation. The role of identity, culture, and heritage in academic spaces continues to evolve 
+                                as institutions work toward decolonization, inclusivity, and cultural responsiveness.
+                            </p>
+                            <p class="text-gray-600">
+                                This section explores how cultural identity shapes academic experiences, the importance of heritage in 
+                                educational contexts, and the ongoing dialogue about decolonizing higher education in South Africa.
+                            </p>
+                        </div>
+
+                        <div id="ic-questions">
+                            <h3 class="text-lg font-semibold text-gray-800">Interactive Questions</h3>
+                            
+                            <div class="question-card">
+                                <h4 class="question-title">1. What does "decolonizing education" mean in the South African context?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic1a" name="ic1" value="a">
+                                        <label for="ic1a">Removing all Western influences from education</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic1b" name="ic1" value="b">
+                                        <label for="ic1b">Integrating African knowledge systems and challenging Eurocentric curricula</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic1c" name="ic1" value="c">
+                                        <label for="ic1c">Teaching only in indigenous languages</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic1d" name="ic1" value="d">
+                                        <label for="ic1d">Focusing exclusively on South African history</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">2. How might cultural heritage influence a student's academic experience?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic2a" name="ic2" value="a">
+                                        <label for="ic2a">It has no impact on academic performance</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic2b" name="ic2" value="b">
+                                        <label for="ic2b">It shapes learning styles, perspectives, and sense of belonging</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic2c" name="ic2" value="c">
+                                        <label for="ic2c">It only matters for arts and humanities subjects</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic2d" name="ic2" value="d">
+                                        <label for="ic2d">It should be left outside the academic environment</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">3. What role do indigenous languages play in South African higher education?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic3a" name="ic3" value="a">
+                                        <label for="ic3a">They are irrelevant in academic contexts</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic3b" name="ic3" value="b">
+                                        <label for="ic3b">They preserve cultural knowledge and enhance cognitive development</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic3c" name="ic3" value="c">
+                                        <label for="ic3c">They should only be used in language departments</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic3d" name="ic3" value="d">
+                                        <label for="ic3d">They hinder international competitiveness</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">4. How can universities better support cultural diversity among students?</h4>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic4a" name="ic4" value="a">
+                                        <label for="ic4a">By maintaining a single institutional culture</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic4b" name="ic4" value="b">
+                                        <label for="ic4b">Through inclusive curricula, cultural spaces, and diverse representation</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic4c" name="ic4" value="c">
+                                        <label for="ic4c">By segregating students by cultural background</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="ic4d" name="ic4" value="d">
+                                        <label for="ic4d">By ignoring cultural differences entirely</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-card">
+                                <h4 class="question-title">5. Reflect on your own cultural identity and heritage. How do these aspects of yourself influence your approach to learning and academic engagement? Consider both challenges and strengths.</h4>
+                                <textarea id="ic5" class="textarea" placeholder="Write your personal reflection here (minimum 150 words)..." style="min-height: 120px;"></textarea>
+                            </div>
+
+                            <button class="button button-primary" style="width: 100%;" onclick="submitICQuiz()">Submit Answers</button>
+                        </div>
+
+                        <div id="ic-results" style="display: none;">
+                            <div class="results">
+                                <h3>Quiz Results</h3>
+                                <div id="ic-results-content"></div>
+                            </div>
+                            <button class="button button-outline" onclick="resetICQuiz()">Retake Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="button button-outline" onclick="previousTab()">
+                <span>← Previous</span>
+            </button>
+            <button class="button button-outline" onclick="nextTab()">
+                <span>Next →</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        let currentTab = 'instructions';
+        const tabs = ['instructions', 'structure', 'gender-violence', 'identity-culture'];
+
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to selected tab button
+            event.target.classList.add('active');
+            
+            currentTab = tabName;
+        }
+
+        function previousTab() {
+            const currentIndex = tabs.indexOf(currentTab);
+            if (currentIndex > 0) {
+                const prevTab = tabs[currentIndex - 1];
+                showTab(prevTab);
+                // Update button appearance
+                document.querySelectorAll('.tab-button').forEach((button, index) => {
+                    button.classList.remove('active');
+                    if (index === currentIndex - 1) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        function nextTab() {
+            const currentIndex = tabs.indexOf(currentTab);
+            if (currentIndex < tabs.length - 1) {
+                const nextTab = tabs[currentIndex + 1];
+                showTab(nextTab);
+                // Update button appearance
+                document.querySelectorAll('.tab-button').forEach((button, index) => {
+                    button.classList.remove('active');
+                    if (index === currentIndex + 1) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        function getSelectedValue(name) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            return selected ? selected.value : null;
+        }
+
+        function submitGVQuiz() {
+            const answers = {
+                q1: getSelectedValue('gv1'),
+                q2: getSelectedValue('gv2'),
+                q3: getSelectedValue('gv3'),
+                q4: getSelectedValue('gv4'),
+                q5: document.getElementById('gv5').value
+            };
+
+            if (!answers.q1 || !answers.q2 || !answers.q3 || !answers.q4 || !answers.q5.trim()) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            const correctAnswers = { q1: 'b', q2: 'b', q3: 'b', q4: 'b' };
+            let resultsHTML = '';
+            
+            for (let i = 1; i <= 4; i++) {
+                const isCorrect = answers[`q${i}`] === correctAnswers[`q${i}`];
+                resultsHTML += `<p><strong>Question ${i}:</strong> ${isCorrect ? '<span class="checkmark">✓ Correct</span>' : '<span class="x-mark">✗ Incorrect</span>'} - The correct answer is B</p>`;
+            }
+            resultsHTML += '<p><strong>Question 5:</strong> Your reflection has been recorded.</p>';
+
+            document.getElementById('gv-results-content').innerHTML = resultsHTML;
+            document.getElementById('gv-questions').style.display = 'none';
+            document.getElementById('gv-results').style.display = 'block';
+        }
+
+        function resetGVQuiz() {
+            document.querySelectorAll('input[name^="gv"]').forEach(input => input.checked = false);
+            document.getElementById('gv5').value = '';
+            document.getElementById('gv-questions').style.display = 'block';
+            document.getElementById('gv-results').style.display = 'none';
+        }
+
+        function submitICQuiz() {
+            const answers = {
+                q1: getSelectedValue('ic1'),
+                q2: getSelectedValue('ic2'),
+                q3: getSelectedValue('ic3'),
+                q4: getSelectedValue('ic4'),
+                q5: document.getElementById('ic5').value
+            };
+
+            if (!answers.q1 || !answers.q2 || !answers.q3 || !answers.q4 || !answers.q5.trim()) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            const correctAnswers = { q1: 'b', q2: 'b', q3: 'b', q4: 'b' };
+            let resultsHTML = '';
+            
+            for (let i = 1; i <= 4; i++) {
+                const isCorrect = answers[`q${i}`] === correctAnswers[`q${i}`];
+                resultsHTML += `<p><strong>Question ${i}:</strong> ${isCorrect ? '<span class="checkmark">✓ Correct</span>' : '<span class="x-mark">✗ Incorrect</span>'} - The correct answer is B</p>`;
+            }
+            resultsHTML += '<p><strong>Question 5:</strong> Your personal reflection has been recorded.</p>';
+
+            document.getElementById('ic-results-content').innerHTML = resultsHTML;
+            document.getElementById('ic-questions').style.display = 'none';
+            document.getElementById('ic-results').style.display = 'block';
+        }
+
+        function resetICQuiz() {
+            document.querySelectorAll('input[name^="ic"]').forEach(input => input.checked = false);
+            document.getElementById('ic5').value = '';
+            document.getElementById('ic-questions').style.display = 'block';
+            document.getElementById('ic-results').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
