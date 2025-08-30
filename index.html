@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -18,222 +17,237 @@
             background: linear-gradient(135deg, #f8f5f0 0%, #e8eaf1 100%);
             min-height: 100vh;
         }
-
-        .header {
-            background: #00205B; /* UP dark blue */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid #e5e7eb;
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            gap: 1.5rem;
+        }
+        /* Left Navigation Column */
+        .left-column {
+            width: 250px;
+            padding: 1rem;
+            background: #00205B;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             color: white;
+            position: sticky;
+            top: 1rem;
+            height: fit-content;
+        }
+        .nav-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #FF8200;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+        }
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .nav-button.active {
+            background: #FF8200;
+            color: white;
+            font-weight: bold;
+        }
+        /* Glowing Home Button - Top Left */
+        .home-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            color: #FFF;
+            cursor: pointer;
             position: relative;
+            z-index: 10;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: transparent;
+        }
+        .home-btn::after {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+        .home-btn::before {
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #FF0000, #FF7300, #FFFB00, #48FF00,
+                #00FFD5, #002BFF, #FF00C8, #FF0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 600%;
+            z-index: -2;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            filter: blur(8px);
+            animation: glowing 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+            opacity: 0;
+        }
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        .home-btn:hover::before {
+            opacity: 1;
+        }
+        .home-btn:active {
+            color: #000;
+            font-weight: bold;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: #00205B;
+            color: white;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .header-title {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-
         .header-title h1 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: white;
         }
-
         .badge {
-            background: #FF8200; /* UP orange */
+            background: #FF8200;
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 0.375rem;
             font-size: 0.875rem;
         }
-
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .tabs {
-            width: 100%;
-        }
-
-        .tab-list {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 0;
-            background: #f9fafb;
-            border-radius: 0.5rem;
-            padding: 0.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .tab-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem 0.5rem;
-            border: none;
-            background: transparent;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #6b7280;
-            transition: all 0.2s;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tab-button.active {
-            background: white;
-            color: #00205B; /* UP dark blue */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .tab-button:hover {
-            color: #00205B; /* UP dark blue */
-        }
-
         .tab-content {
             display: none;
+            padding: 2rem;
         }
-
         .tab-content.active {
             display: block;
         }
-
         .card {
             background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb;
         }
-
         .card-header {
             padding: 1.5rem 1.5rem 0;
         }
-
         .card-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #00205B; /* UP dark blue */
+            color: #00205B;
             margin-bottom: 0.5rem;
         }
-
         .card-description {
-            color: #6b5563;
+            color: #6b7280;
             margin-bottom: 1rem;
         }
-
         .card-content {
             padding: 1.5rem;
         }
-
         .grid {
             display: grid;
             gap: 1.5rem;
         }
-
         .grid-cols-2 {
             grid-template-columns: repeat(2, 1fr);
         }
-
         .space-y-6 > * + * {
             margin-top: 1.5rem;
         }
-
         .space-y-4 > * + * {
             margin-top: 1rem;
         }
-
         .space-y-3 > * + * {
             margin-top: 0.75rem;
         }
-
-        .space-y-2 > * + * {
-            margin-top: 0.5rem;
-        }
-
         .text-lg {
             font-size: 1.125rem;
         }
-
         .font-semibold {
             font-weight: 600;
         }
-
         .font-medium {
             font-weight: 500;
         }
-
         .text-gray-800 {
             color: #1f2937;
         }
-
         .text-gray-600 {
             color: #4b5563;
         }
-
         .text-blue-700 {
-            color: #00205B; /* UP dark blue */
+            color: #00205B;
         }
-
-        .border-l-4 {
-            border-left: 4px solid;
-            padding-left: 1rem;
-        }
-
-        .border-blue-500 {
-            border-left-color: #00205B; /* UP dark blue */
-        }
-
-        .border-green-500 {
-            border-left-color: #10b981;
-        }
-
-        .border-yellow-500 {
-            border-left-color: #FF8200; /* UP orange */
-        }
-
-        .border-purple-500 {
-            border-left-color: #8b5cf6;
-        }
-
         .bg-blue-50 {
-            background-color: #e6eff9; /* Light blue tint */
+            background-color: #e6eff9;
         }
-
         .bg-gray-50 {
             background-color: #f9fafb;
         }
-
         .bg-amber-50 {
             background-color: #fffbeb;
         }
-
         .bg-green-50 {
             background-color: #f0fdf4;
         }
-
         .p-4 {
             padding: 1rem;
         }
-
         .rounded-lg {
             border-radius: 0.5rem;
         }
-
         .topic-badge {
             display: inline-block;
             background: #f3f4f6;
@@ -244,7 +258,6 @@
             margin: 0.25rem;
             border: 1px solid #d1d5db;
         }
-
         .question-card {
             background: white;
             border: 1px solid #e5e7eb;
@@ -252,34 +265,11 @@
             padding: 1.5rem;
             margin-bottom: 1rem;
         }
-
         .question-title {
             font-weight: 500;
             margin-bottom: 0.75rem;
             color: #1f2937;
         }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .radio-option input[type="radio"] {
-            margin: 0;
-        }
-
-        .radio-option label {
-            cursor: pointer;
-            color: #374151;
-        }
-
         .textarea {
             width: 100%;
             min-height: 100px;
@@ -289,13 +279,11 @@
             font-family: inherit;
             resize: vertical;
         }
-
         .textarea:focus {
             outline: none;
-            border-color: #00205B; /* UP dark blue */
+            border-color: #00205B;
             box-shadow: 0 0 0 3px rgba(0, 32, 91, 0.1);
         }
-
         .button {
             display: inline-flex;
             align-items: center;
@@ -309,133 +297,34 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .button-primary {
-            background: #00205B; /* UP dark blue */
+            background: #00205B;
             color: white;
         }
-
         .button-primary:hover {
-            background: #001235; /* Darker blue */
+            background: #001235;
         }
-
-        .button-primary:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-
         .button-outline {
             background: white;
             color: #374151;
             border: 1px solid #d1d5db;
         }
-
         .button-outline:hover {
             background: #f9fafb;
         }
-
         .navigation-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-top: 2rem;
         }
-
-        .results {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 0.5rem;
-            padding: 1rem;
-        }
-
-        .results h3 {
-            color: #166534;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .results p {
-            margin-bottom: 0.25rem;
-            color: #166534;
-        }
-
-        .checkmark {
-            color: #10b981;
-        }
-
-        .x-mark {
-            color: #ef4444;
-        }
-
         .blockquote {
-            border-left: 4px solid #00205B; /* UP dark blue */
+            border-left: 4px solid #00205B;
             padding-left: 1rem;
             font-style: italic;
             color: #4b5563;
             margin: 1rem 0;
         }
-
-        .icon {
-            width: 1rem;
-            height: 1rem;
-            display: inline-block;
-        }
-
-        .article-link {
-            display: inline-block;
-            background: #00205B; /* UP dark blue */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 500;
-            margin: 1rem 0;
-        }
-
-        .article-link:hover {
-            background: #001235; /* Darker blue */
-        }
-
-        .tips-container {
-            background: #FF8200; /* UP orange */
-            color: white;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-top: 2rem;
-        }
-
-        .tips-container h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .tips-list {
-            list-style-type: none;
-        }
-
-        .tips-list li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .tips-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .copy-button {
-            background: #10b981;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .copy-button:hover {
-            background: #059669;
-        }
-
         .article-link-box {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
@@ -443,13 +332,6 @@
             padding: 1rem;
             margin: 1rem 0;
         }
-
-        .article-link-box h4 {
-            margin-bottom: 0.5rem;
-            color: #00205B;
-            font-weight: 600;
-        }
-
         .article-link-button {
             display: inline-flex;
             align-items: center;
@@ -462,16 +344,9 @@
             font-weight: 500;
             transition: background 0.2s;
         }
-
         .article-link-button:hover {
             background: #001235;
         }
-        
-        .outcomes-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        
         .outcomes-list li {
             padding: 1rem;
             margin-bottom: 1rem;
@@ -479,20 +354,16 @@
             background: #f8f9fa;
             border-left: 4px solid #00205B;
         }
-        
         .outcomes-list li:nth-child(2) {
             border-left-color: #FF8200;
         }
-        
         .outcomes-list li:nth-child(3) {
             border-left-color: #10b981;
         }
-        
         .outcomes-list li:nth-child(4) {
             border-left-color: #8b5cf6;
         }
-
-        /* New styles for GenAI Integration tab */
+        /* GenAI Image Styles */
         .genai-image {
             max-width: 35%;
             height: auto;
@@ -503,7 +374,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         .image-caption {
             text-align: center;
             font-style: italic;
@@ -511,7 +381,6 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
-        
         .language-section {
             background-color: #f8f9fa;
             padding: 1rem;
@@ -519,12 +388,10 @@
             margin: 1rem 0;
             border-left: 4px solid #FF8200;
         }
-        
         .language-section h4 {
             color: #00205B;
             margin-bottom: 0.5rem;
         }
-        
         .citation-box {
             background-color: #f0f4f8;
             padding: 1.5rem;
@@ -532,12 +399,10 @@
             border-left: 4px solid #00205B;
             margin-top: 1.5rem;
         }
-        
         .citation-box h4 {
             color: #00205B;
             margin-bottom: 0.75rem;
         }
-        
         .citation-example {
             font-family: monospace;
             background-color: white;
@@ -546,185 +411,110 @@
             border: 1px solid #d1d5db;
             overflow-x: auto;
         }
-
-        /* Glowing Button Styles */
-        .home-btn {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 10px 20px;
-            border: none;
-            outline: none;
-            color: #FFF;
-            cursor: pointer;
-            position: relative;
-            z-index: 0;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .home-btn::after {
-            content: "";
-            z-index: -1;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #333;
-            left: 0;
-            top: 0;
-            border-radius: 10px;
-        }
-        /* glow */
-        .home-btn::before {
-            content: "";
-            background: linear-gradient(
-                45deg,
-                #FF0000, #FF7300, #FFFB00, #48FF00,
-                #00FFD5, #002BFF, #FF00C8, #FF0000
-            );
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            background-size: 600%;
-            z-index: -1;
-            width: calc(100% + 4px);
-            height:  calc(100% + 4px);
-            filter: blur(8px);
-            animation: glowing 20s linear infinite;
-            transition: opacity .3s ease-in-out;
-            border-radius: 10px;
-            opacity: 0;
-        }
-
-        @keyframes glowing {
-            0% {background-position: 0 0;}
-            50% {background-position: 400% 0;}
-            100% {background-position: 0 0;}
-        }
-
-        /* hover */
-        .home-btn:hover::before {
-            opacity: 1;
-        }
-
-        .home-btn:active:after {
-            background: transparent;
-        }
-
-        .home-btn:active {
-            color: #000;
-            font-weight: bold;
-        }
-
+        /* Responsive Adjustments */
         @media (max-width: 1024px) {
-            .tab-list {
-                grid-template-columns: repeat(3, 1fr);
+            .container {
+                flex-direction: column;
+            }
+            .left-column {
+                width: 100%;
+                margin-bottom: 1rem;
+                position: static;
+            }
+            .home-btn {
+                position: static;
+                display: block;
+                margin: 0 auto 1rem auto;
+            }
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-button {
+                width: auto;
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+                font-size: 0.85rem;
             }
         }
-
         @media (max-width: 768px) {
-            .tab-list {
-                grid-template-columns: repeat(2, 1fr);
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
             }
-            
             .grid-cols-2 {
                 grid-template-columns: 1fr;
             }
-            
-            .header-content {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .main-content {
-                padding: 1rem;
-            }
-            
-            .tab-button {
-                font-size: 0.7rem;
-                padding: 0.5rem 0.25rem;
-            }
-            
             .genai-image {
                 max-width: 65%;
             }
-            
-            .home-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-                top: 0.5rem;
-                left: 0.5rem;
+            .tab-content {
+                padding: 1rem;
             }
         }
-
         @media (max-width: 480px) {
-            .tab-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .tab-button {
+            .nav-button {
+                min-width: 100px;
                 font-size: 0.8rem;
-                padding: 0.75rem 0.5rem;
+                padding: 0.6rem 0.5rem;
             }
-            
             .genai-image {
                 max-width: 85%;
-            }
-            
-            .home-btn {
-                padding: 6px 12px;
-                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Academic Literacy Home Button -->
+    <!-- Glowing Home Button (Top Left) -->
     <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
 
-    <header class="header">
-        <div class="header-content">
-            <div class="header-title">
-                <span class="icon">🏠</span>
-                <h1>Assignment 2: Reading Reflection</h1>
-            </div>
-            <div class="badge">Academic Year 2025</div>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="tabs">
-            <div class="tab-list">
-                <button class="tab-button" onclick="showTab('session-outcomes')">
-                    <span class="icon">📌</span>
+    <div class="container">
+        <!-- Left Navigation Column -->
+        <div class="left-column">
+            <h2 class="nav-title">Assignment 2 Navigation</h2>
+            <div class="nav-links">
+                <button class="nav-button active" onclick="showTab('session-outcomes')">
+                    <span>📌</span>
                     <span>Session Outcomes</span>
                 </button>
-                <button class="tab-button" onclick="showTab('instructions')">
-                    <span class="icon">📖</span>
+                <button class="nav-button" onclick="showTab('instructions')">
+                    <span>📖</span>
                     <span>Instructions</span>
                 </button>
-                <button class="tab-button" onclick="showTab('gender-violence')">
-                    <span class="icon">👥</span>
+                <button class="nav-button" onclick="showTab('gender-violence')">
+                    <span>👥</span>
                     <span>Gender Violence</span>
                 </button>
-                <button class="tab-button" onclick="showTab('critical-reading')">
-                    <span class="icon">🔍</span>
+                <button class="nav-button" onclick="showTab('critical-reading')">
+                    <span>🔍</span>
                     <span>Critical Reading</span>
                 </button>
-                <button class="tab-button" onclick="showTab('session-reflection')">
-                    <span class="icon">🧠</span>
+                <button class="nav-button" onclick="showTab('session-reflection')">
+                    <span>🧠</span>
                     <span>Session Reflection</span>
                 </button>
-                <button class="tab-button active" onclick="showTab('genai-integration')">
-                    <span class="icon">🤖</span>
+                <button class="nav-button" onclick="showTab('genai-integration')">
+                    <span>🤖</span>
                     <span>GenAI Integration</span>
                 </button>
             </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="header">
+                <div class="header-title">
+                    <span>🏠</span>
+                    <h1>Assignment 2: Reading Reflection</h1>
+                </div>
+                <div class="badge">Academic Year 2025</div>
+            </header>
 
             <!-- Session Outcomes Tab -->
-            <div id="session-outcomes" class="tab-content">
+            <div id="session-outcomes" class="tab-content active">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Session Outcomes</h2>
@@ -782,7 +572,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-blue-700" style="margin-bottom: 0.5rem;">Assignment Components</h4>
                             <div class="grid grid-cols-2">
@@ -816,7 +605,6 @@
                                 together students, youth activists, academics, policymakers, and civil society organisations to address 
                                 GBV challenges and develop youth-centred solutions.
                             </p>
-                            
                             <div class="article-link-box">
                                 <h4>Read the Full Article:</h4>
                                 <a href="https://mg.co.za/the-diplomat/2025-08-30-sweden-on-the-road-empowering-south-africas-next-generation-to-lead-the-fight-against-gender-based-violence/" class="article-link-button" target="_blank">
@@ -824,47 +612,38 @@
                                     <span>MG.co.za: Sweden on the road - Empowering South Africa's next generation</span>
                                 </a>
                             </div>
-                            
                             <div class="blockquote">
                                 "Young people are not just the future, they are the present. Their courage, energy and creativity are 
                                 what will move societies forward." - Elisabeth Hårleman, Swedish Embassy
                             </div>
                         </div>
-
                         <div id="gv-questions">
                             <h3 class="text-lg font-semibold text-gray-800">Analytical Questions</h3>
-                            
                             <div class="question-card">
-                                <h4 class="question-title">1. What types of evidence does the author use to support the claim that youth leadership is central to addressing gender-based violence? Consider whether the evidence is statistical, anecdotal, institutional (e.referencing the National Strategic Plan), or testimonial (e.g., quotes from officials). How does this shape the credibility of the argument?</h4>
+                                <h4 class="question-title">1. What types of evidence does the author use to support the claim that youth leadership is central to addressing gender-based violence? Consider whether the evidence is statistical, anecdotal, institutional (e.g. referencing the National Strategic Plan), or testimonial (e.g., quotes from officials). How does this shape the credibility of the argument?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.g., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">3. In what ways does the article appeal to cultural values or shared histories between South Africa and Sweden? Identify references to "historic partnership," "shared commitment," or "global advocacy." How do these cultural and diplomatic appeals reinforce the message and invite reader alignment?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">4. Which emotional appeals are used to engage the reader, and how do they function within the broader argument? Pay attention to language that evokes hope, urgency, or pride—especially in phrases like "empowering young leaders" or "solutions to South Africa's toughest challenges." How do these affect the reader's response?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">5. How does the article position the reader in relation to the issue—are they being invited to act, reflect, or admire?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
                         </div>
-
                         <button class="button button-primary copy-button" onclick="copyAllResponses('gender-violence')">
-                            <span class="icon">📋</span>
+                            <span>📋</span>
                             <span>Copy All Responses</span>
                         </button>
-
                         <div class="tips-container">
                             <h3>4 Key Tips for Integrating Your Analysis</h3>
                             <ul class="tips-list">
@@ -878,7 +657,7 @@
                 </div>
             </div>
 
-            <!-- Critical Reading Reflection Tab -->
+            <!-- Critical Reading Tab -->
             <div id="critical-reading" class="tab-content">
                 <div class="card">
                     <div class="card-header">
@@ -893,48 +672,39 @@
                                 in relation to the article "Sweden on the road: Empowering South Africa's next generation to lead the fight 
                                 against gender-based violence" and the broader issue of GBV in South Africa.
                             </p>
-                            
                             <div class="article-link-box">
                                 <h4>Read the Full Article:</h4>
                                 <a href="https://mg.co.za/the-diplomat/2025-08-30-sweden-on-the-road-empowering-south-africas-next-generation-to-lead-the-fight-against-gender-based-violence/" class="article-link-button" target="_blank">
-                                    <span class="icon">📰</span>
+                                    <span>📰</span>
                                     <span>MG.co.za: Sweden on the road - Empowering South Africa's next generation</span>
                                 </a>
                             </div>
                         </div>
-
                         <div id="cr-questions">
                             <h3 class="text-lg font-semibold text-gray-800">Reflection Questions</h3>
-                            
                             <div class="question-card">
                                 <h4 class="question-title">1. How does the article's emphasis on youth leadership resonate with your own role as a student or emerging professional? In what ways do you see yourself contributing to social change, particularly around gender-based violence?</h4>
                                 <textarea class="textarea" placeholder="Write your reflection here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">2. What connections can you draw between the article's themes and your academic discipline or field of study? How might your discipline help address or understand the crisis of GBV in South Africa?</h4>
                                 <textarea class="textarea" placeholder="Write your reflection here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">3. Reflect on your identity as a young African. How does the article's portrayal of youth empowerment align or clash with your lived experience? Consider how cultural, social, or institutional factors shape your perspective.</h4>
                                 <textarea class="textarea" placeholder="Write your reflection here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">4. The article highlights international collaboration. What are your thoughts on the role of global partnerships in solving local issues like GBV? Do you feel these partnerships empower or overshadow local voices?</h4>
                                 <textarea class="textarea" placeholder="Write your reflection here..."></textarea>
                             </div>
-
                             <div class="question-card">
                                 <h4 class="question-title">5. What personal insights or emotional responses did you have while reading the article? How might these responses influence the way you engage with GBV in academic or community contexts?</h4>
                                 <textarea class="textarea" placeholder="Write your reflection here..."></textarea>
                             </div>
                         </div>
-
-                       极
                         <button class="button button-primary copy-button" onclick="copyAllResponses('critical-reading')">
-                            <span class="icon">📋</span>
+                            <span>📋</span>
                             <span>Copy All Responses</span>
                         </button>
                     </div>
@@ -943,7 +713,6 @@
 
             <!-- Session Reflection Tab -->
             <div id="session-reflection" class="tab-content">
-                <极
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Session Reflection</h2>
@@ -957,17 +726,17 @@
                         <div class="question-card">
                             <h4 class="question-title">2. How does the article deepen your understanding of gender-based violence in South Africa?</h4>
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
-                        </极
+                        </div>
                         <div class="question-card">
                             <h4 class="question-title">3. In what ways does gender-based violence affect or relate to your personal identity, background, or lived experience?</h4>
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
                         </div>
                         <div class="question-card">
-                            <h4 class="question-title">4. How does your academic discipline or field of study help you interpret or respond to the issue of gender-based violence?</极
+                            <h4 class="question-title">4. How does your academic discipline or field of study help you interpret or respond to the issue of gender-based violence?</h4>
                             <textarea class="textarea" placeholder="Write your response here..."></textarea>
                         </div>
                         <button class="button button-primary copy-button" onclick="copyAllResponses('session-reflection')">
-                            <span class="icon">📋</span>
+                            <span>📋</span>
                             <span>Copy All Responses</span>
                         </button>
                     </div>
@@ -975,7 +744,7 @@
             </div>
 
             <!-- GenAI Integration Tab -->
-            <div id="genai-integration" class="tab-content active">
+            <div id="genai-integration" class="tab-content">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">GenAI Integration</h2>
@@ -984,21 +753,16 @@
                     <div class="card-content space-y-6">
                         <h3 class="text-lg font-semibold text-gray-800">Generated Image</h3>
                         <p class="text-gray-600">This image represents the theme of gender-based violence and the importance of protecting women in society.</p>
-                        
                         <img src="https://github.com/oeybers-cpu/all_125_assignment2_a/blob/main/Gemini_Generated_Image_oda57xoda57xoda5.png?raw=true" alt="GenAI Generated Image on Gender-Based Violence" class="genai-image">
-                        
                         <p class="image-caption">Figure 1: AI-generated image representing the theme "If you strike a woman, you strike a nation" (Google Gemini, 2025).</p>
-                        
                         <div class="language-section">
                             <h4>L1: Setswana</h4>
                             <p>Motho yo o itayang mosadi, o itaya lekgwata. Go sireletsa basadi ke boikarabelo jwa rona rotlhe.</p>
                         </div>
-                        
                         <div class="language-section">
                             <h4>L2: English</h4>
-                            <p>If you strike a woman, you strike a nation. We all must protect women.</极
+                            <p>If you strike a woman, you strike a nation. We all must protect women.</p>
                         </div>
-                        
                         <div class="citation-box">
                             <h4>Reference Citation (Harvard Style)</h4>
                             <p>When citing this AI-generated image in your reference list, use the following format:</p>
@@ -1006,103 +770,76 @@
                                 Google Gemini (2025) <i>AI-generated image representing the theme "If you strike a woman, you strike a nation"</i> [Digital image]. Available at: https://github.com/oeybers-cpu/all_125_assignment2_a/blob/main/Gemini_Generated_Image_oda57xoda57xoda5.png?raw=true (Accessed: 30 August 2025).
                             </div>
                         </div>
-                        
-                        <div class="bg-blue-50 p极 rounded-lg">
+                        <div class="bg-blue-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-blue-700">Assignment Requirement</h4>
                             <p>This GenAI image and translanguaging component is part of Assignment 2 requirements. The image should capture the theme of your reading reflection or your personal response to the article, accompanied by text in at least two languages.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="navigation-buttons">
-            <button class="button button-outline" onclick="previousTab()">
-                <span>← Previous</span>
-            </button>
-            <button class="button button-outline极 onclick="nextTab()">
-                <span>Next →</span>
-            </button>
+            <!-- Navigation Buttons -->
+            <div class="navigation-buttons">
+                <button class="button button-outline" onclick="previousTab()">
+                    <span>← Previous</span>
+                </button>
+                <button class="button button-primary" onclick="nextTab()">
+                    <span>Next →</span>
+                </button>
+            </div>
         </div>
-    </main>
+    </div>
 
     <script>
-        let currentTab = 'genai-integration';
+        let currentTab = 'session-outcomes';
         const tabs = ['session-outcomes', 'instructions', 'gender-violence', 'critical-reading', 'session-reflection', 'genai-integration'];
 
         function showTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show selected tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.nav-button').forEach(button => button.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to selected tab button
-            event.target.classList.add('active');
-            
+            const activeButton = [...document.querySelectorAll('.nav-button')].find(btn => btn.textContent.includes(tabName.replace('-', ' ')));
+            if (activeButton) activeButton.classList.add('active');
             currentTab = tabName;
+            document.querySelector('.main-content').scrollTo(0, 0);
         }
 
         function previousTab() {
             const currentIndex = tabs.indexOf(currentTab);
             if (currentIndex > 0) {
-                const prevTab = tabs[currentIndex - 1];
-                showTab(prevTab);
-                // Update button appearance
-                document.querySelectorAll('.tab-button').forEach((button, index) => {
-                    button.classList.remove('active');
-                    if (index === currentIndex - 1) {
-                        button.classList.add('active');
-                    }
-                });
+                showTab(tabs[currentIndex - 1]);
             }
         }
 
         function nextTab() {
             const currentIndex = tabs.indexOf(currentTab);
             if (currentIndex < tabs.length - 1) {
-                const nextTab = tabs[currentIndex + 1];
-                showTab(nextTab);
-                // Update button appearance
-                document.querySelectorAll('.tab-button').forEach((button, index) => {
-                    button.classList.remove('active');
-                    if (index === currentIndex + 1) {
-                        button.classList.add('active');
-                    }
-                });
+                showTab(tabs[currentIndex + 1]);
             }
         }
 
         function copyAllResponses(tabId) {
-            // Get all textareas in the current tab
             const textareas = document.querySelectorAll(`#${tabId} .textarea`);
             let allResponses = "";
-            
-            // Collect all responses with question numbers
-            textareas.forEach((textarea, index)极 {
+            textareas.forEach((textarea, index) => {
                 const question = textarea.closest('.question-card').querySelector('.question-title').textContent;
-                const response = textarea.value;
-                
-                allResponses += `Question ${index + 1}: ${question}\n\n`;
-                allResponses += `Response: ${response}\n\n`;
-                allResponses += "----------------------------------------\n\n";
+                const response = textarea.value || "(No response)";
+                allResponses += `Question ${index + 1}: ${question}\n`;
+                allResponses += `Response: ${response}\n`;
+                allResponses += "----------------------------------------\n";
             });
-            
-            // Copy to clipboard
             navigator.clipboard.writeText(allResponses).then(() => {
-                alert("All responses have been copied to your clipboard. You can now paste them into your essay or submission form.");
+                alert("All responses copied to clipboard!");
             }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert("Failed to copy responses. Please try again.");
+                console.error('Copy failed:', err);
+                alert("Copy failed. Please try again.");
             });
         }
+
+        // Initialize active tab
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('session-outcomes');
+        });
     </script>
 </body>
 </html>
