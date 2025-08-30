@@ -131,7 +131,7 @@
         }
 
         .card-description {
-            color: #6b7280;
+            color: #6b5563;
             margin-bottom: 1rem;
         }
 
@@ -493,11 +493,22 @@
 
         /* New styles for GenAI Integration tab */
         .genai-image {
-            max-width: 100%;
+            max-width: 35%;
             height: auto;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin: 1rem 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
         
         .language-section {
@@ -511,6 +522,28 @@
         .language-section h4 {
             color: #00205B;
             margin-bottom: 0.5rem;
+        }
+        
+        .citation-box {
+            background-color: #f0f4f8;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #00205B;
+            margin-top: 1.5rem;
+        }
+        
+        .citation-box h4 {
+            color: #00205B;
+            margin-bottom: 0.75rem;
+        }
+        
+        .citation-example {
+            font-family: monospace;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid #d1d5db;
+            overflow-x: auto;
         }
 
         @media (max-width: 1024px) {
@@ -542,6 +575,10 @@
                 font-size: 0.7rem;
                 padding: 0.5rem 0.25rem;
             }
+            
+            .genai-image {
+                max-width: 65%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -552,6 +589,10 @@
             .tab-button {
                 font-size: 0.8rem;
                 padding: 0.75rem 0.5rem;
+            }
+            
+            .genai-image {
+                max-width: 85%;
             }
         }
     </style>
@@ -858,6 +899,8 @@
                         
                         <img src="https://github.com/oeybers-cpu/all_125_assignment2_a/blob/main/Gemini_Generated_Image_oda57xoda57xoda5.png?raw=true" alt="GenAI Generated Image on Gender-Based Violence" class="genai-image">
                         
+                        <p class="image-caption">Figure 1: AI-generated image representing the theme "If you strike a woman, you strike a nation" (Google Gemini, 2025).</p>
+                        
                         <div class="language-section">
                             <h4>L1: Setswana</h4>
                             <p>Motho yo o itayang mosadi, o itaya lekgwata. Go sireletsa basadi ke boikarabelo jwa rona rotlhe.</p>
@@ -866,6 +909,14 @@
                         <div class="language-section">
                             <h4>L2: English</h4>
                             <p>If you strike a woman, you strike a nation. We all must protect women.</p>
+                        </div>
+                        
+                        <div class="citation-box">
+                            <h4>Reference Citation (Harvard Style)</h4>
+                            <p>When citing this AI-generated image in your reference list, use the following format:</p>
+                            <div class="citation-example">
+                                Google Gemini (2025) <i>AI-generated image representing the theme "If you strike a woman, you strike a nation"</i> [Digital image]. Available at: https://github.com/oeybers-cpu/all_125_assignment2_a/blob/main/Gemini_Generated_Image_oda57xoda57xoda5.png?raw=true (Accessed: 30 August 2025).
+                            </div>
                         </div>
                         
                         <div class="bg-blue-50 p-4 rounded-lg">
