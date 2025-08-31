@@ -18,6 +18,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-top: 20px; /* Added padding to accommodate the fixed button */
         }
         .container {
             display: flex;
@@ -75,25 +76,26 @@
             color: white;
             font-weight: bold;
         }
-        /* Glowing Home Button - Top Left */
+        /* Enhanced Glowing Home Button - Fixed at Top */
         .home-btn {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 8px 16px; /* Reduced padding for smaller size */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
             border: none;
             outline: none;
             color: #FFF;
             cursor: pointer;
-            position: relative;
-            z-index: 10;
-            border-radius: 8px; /* Slightly smaller radius */
+            z-index: 1000;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem; /* Slightly smaller font */
+            font-weight: 600;
+            font-size: 1rem;
             background: transparent;
-            display: inline-block; /* Critical change - was block */
-            width: auto; /* Critical change - was 90% */
+            display: inline-block;
+            width: auto;
+            box-shadow: 0 0 15px rgba(255, 130, 0, 0.6);
+            transition: all 0.3s ease;
         }
         .home-btn::after {
             content: "";
@@ -101,7 +103,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: #333;
+            background-color: #00205B;
             left: 0;
             top: 0;
             border-radius: 10px;
@@ -134,12 +136,17 @@
         .home-btn:hover::before {
             opacity: 1;
         }
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 130, 0, 0.8);
+        }
         .home-btn:active {
             color: #000;
             font-weight: bold;
+            transform: translateY(0);
         }
 
-        /* Main Content Area */
+        /* Main Content Area - Removed header styles */
         .main-content {
             flex: 1;
             background: white;
@@ -149,30 +156,8 @@
             display: flex;
             flex-direction: column;
         }
-        .header {
-            background: #00205B;
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .header-title h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .badge {
-            background: #FF8200;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-        }
+        /* Removed .header styles */
+        
         .tab-content {
             display: none;
             padding: 2rem;
@@ -458,6 +443,20 @@
             color: white;
             margin-bottom: 0.5rem;
         }
+        
+        /* Page Title Styling (to replace the removed header) */
+        .page-title {
+            text-align: center;
+            margin: 0 0 2rem 0;
+            color: #00205B;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .container {
@@ -469,9 +468,11 @@
                 position: static;
             }
             .home-btn {
-                position: static;
-                display: block;
-                margin: 0 auto 1rem auto;
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
             }
             .nav-links {
                 flex-direction: row;
@@ -485,13 +486,12 @@
                 justify-content: center;
                 font-size: 0.85rem;
             }
+            .page-title {
+                margin-top: 60px; /* Make space for the button */
+                font-size: 1.5rem;
+            }
         }
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
             .grid-cols-2 {
                 grid-template-columns: 1fr;
             }
@@ -506,6 +506,10 @@
                 font-size: 2.5rem !important;
                 min-width: 250px;
                 padding: 0.4rem 1rem;
+            }
+            .page-title {
+                font-size: 1.3rem;
+                margin-top: 50px;
             }
         }
         @media (max-width: 480px) {
@@ -526,16 +530,29 @@
             .counter-label {
                 font-size: 1rem;
             }
+            .home-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                right: 5px;
+                top: 5px;
+            }
+            .page-title {
+                font-size: 1.1rem;
+                margin-top: 45px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Glowing Home Button (Top Left) - Now properly sized -->
+    <!-- Enhanced Glowing Home Button (Fixed at Top Right) -->
     <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
+
+    <!-- Page Title to replace the removed header -->
+    <h1 class="page-title">Assignment 2: Reading Reflection</h1>
 
     <div class="container">
         <!-- Left Navigation Column -->
-        <div class="left-column" style="margin-top: 2.5rem;">
+        <div class="left-column">
             <h2 class="nav-title">Assignment 2 Navigation</h2>
             <div class="nav-links">
                 <button class="nav-button active" onclick="showTab('session-outcomes')">
@@ -567,14 +584,6 @@
 
         <!-- Main Content Area -->
         <div class="main-content">
-            <header class="header">
-                <div class="header-title">
-                    <span>🏠</span>
-                    <h1>Assignment 2: Reading Reflection</h1>
-                </div>
-                <div class="badge">Academic Year 2025</div>
-            </header>
-
             <!-- Session Outcomes Tab -->
             <div id="session-outcomes" class="tab-content active">
                 <div class="card">
@@ -686,7 +695,7 @@
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
                             <div class="question-card">
-                                <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.g., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
+                                <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.e., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
                             <div class="question-card">
