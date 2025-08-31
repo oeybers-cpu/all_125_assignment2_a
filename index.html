@@ -80,20 +80,20 @@
             position: absolute;
             top: 1rem;
             left: 1rem;
-            padding: 10px 20px; /* Adjusted padding for better text fit */
+            padding: 8px 16px; /* Reduced padding for smaller size */
             border: none;
             outline: none;
             color: #FFF;
             cursor: pointer;
             position: relative;
             z-index: 10;
-            border-radius: 12px;
+            border-radius: 8px; /* Slightly smaller radius */
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* Slightly smaller font */
             background: transparent;
-            display: inline-block; /* Changed to inline-block */
-            width: auto; /* Changed from 90% to auto */
+            display: inline-block; /* Critical change - was block */
+            width: auto; /* Critical change - was 90% */
         }
         .home-btn::after {
             content: "";
@@ -530,7 +530,7 @@
     </style>
 </head>
 <body>
-    <!-- Glowing Home Button (Top Left) -->
+    <!-- Glowing Home Button (Top Left) - Now properly sized -->
     <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
 
     <div class="container">
