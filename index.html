@@ -76,26 +76,66 @@
             color: white;
             font-weight: bold;
         }
-        /* Enhanced Glowing Home Button - Fixed at Top Right */
-        .home-btn {
+        /* Button Container for perfect alignment */
+        .button-container {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            pointer-events: none; /* Allows clicks to pass through to buttons */
+        }
+        .button-container > * {
+            pointer-events: auto; /* Re-enable clicks on buttons */
+        }
+        /* Session Button - Fixed at Left */
+        .session-btn {
             padding: 12px 24px;
             border: none;
             outline: none;
             color: #FFF;
             cursor: pointer;
-            z-index: 1000;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            background: #FF8200; /* Orange background */
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(255, 130, 0, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        .session-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 130, 0, 0.8);
+            background: #e67300; /* Slightly darker orange on hover */
+        }
+        .session-btn:active {
+            color: #000;
+            font-weight: bold;
+            transform: translateY(0);
+        }
+        /* Enhanced Glowing Home Button - Fixed at Right */
+        .home-btn {
+            padding: 12px 24px;
+            border: none;
+            outline: none;
+            color: #FFF;
+            cursor: pointer;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
             background: transparent;
             display: inline-block;
-            width: auto;
             box-shadow: 0 0 15px rgba(255, 130, 0, 0.6);
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
         }
         .home-btn::after {
             content: "";
@@ -127,37 +167,6 @@
             transition: opacity 0.3s ease-in-out;
             border-radius: 10px;
             opacity: 0;
-        }
-        /* New Session Button - Fixed at Top Left with Orange Background */
-        .session-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 12px 24px;
-            border: none;
-            outline: none;
-            color: #FFF;
-            cursor: pointer;
-            z-index: 1000;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            background: #FF8200; /* Orange background */
-            display: inline-block;
-            width: auto;
-            box-shadow: 0 0 15px rgba(255, 130, 0, 0.6);
-            transition: all 0.3s ease;
-        }
-        .session-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 130, 0, 0.8);
-            background: #e67300; /* Slightly darker orange on hover */
-        }
-        .session-btn:active {
-            color: #000;
-            font-weight: bold;
-            transform: translateY(0);
         }
         @keyframes glowing {
             0% { background-position: 0 0; }
@@ -249,7 +258,7 @@
             color: #1f2937;
         }
         .text-gray-600 {
-            color: #4b5563;
+            color: 4b5563;
         }
         .text-blue-700 {
             color: #00205B;
@@ -466,7 +475,7 @@
             padding: 0.5rem 1.5rem;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            minimal-width: 300px;
+            min-width: 300px;
             letter-spacing: 1px;
         }
         .counter-label {
@@ -498,17 +507,13 @@
                 margin-bottom: 1rem;
                 position: static;
             }
-            .home-btn, .session-btn {
-                position: fixed;
+            .button-container {
+                padding: 0 10px;
                 top: 10px;
+            }
+            .home-btn, .session-btn {
                 padding: 10px 16px;
                 font-size: 0.9rem;
-            }
-            .home-btn {
-                right: 10px;
-            }
-            .session-btn {
-                left: 10px;
             }
             .nav-links {
                 flex-direction: row;
@@ -574,11 +579,8 @@
                 padding: 6px 10px;
                 font-size: 0.7rem;
             }
-            .home-btn {
-                right: 5px;
-            }
-            .session-btn {
-                left: 5px;
+            .button-container {
+                padding: 0 5px;
             }
             .page-title {
                 font-size: 1.1rem;
@@ -589,11 +591,14 @@
     </style>
 </head>
 <body>
-    <!-- New Session Button (Fixed at Top Left) -->
-    <div class="session-btn">Session 1_Week 6</div>
+    <!-- Button Container for perfect alignment -->
+    <div class="button-container">
+        <!-- Session Button (Fixed at Left) -->
+        <div class="session-btn">Session 1_Week 6</div>
 
-    <!-- Enhanced Glowing Home Button (Fixed at Top Right) -->
-    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
+        <!-- Enhanced Glowing Home Button (Fixed at Right) -->
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
+    </div>
 
     <!-- Page Title to replace the removed header -->
     <h1 class="page-title">Assignment 2: Reading Reflection</h1>
