@@ -18,7 +18,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-top: 20px; /* Added padding to accommodate the fixed button */
+            padding-top: 20px; /* Added padding to accommodate the fixed buttons */
         }
         .container {
             display: flex;
@@ -76,7 +76,7 @@
             color: white;
             font-weight: bold;
         }
-        /* Enhanced Glowing Home Button - Fixed at Top */
+        /* Enhanced Glowing Home Button - Fixed at Top Right */
         .home-btn {
             position: fixed;
             top: 20px;
@@ -127,6 +127,37 @@
             transition: opacity 0.3s ease-in-out;
             border-radius: 10px;
             opacity: 0;
+        }
+        /* New Session Button - Fixed at Top Left with Orange Background */
+        .session-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            border: none;
+            outline: none;
+            color: #FFF;
+            cursor: pointer;
+            z-index: 1000;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            background: #FF8200; /* Orange background */
+            display: inline-block;
+            width: auto;
+            box-shadow: 0 0 15px rgba(255, 130, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .session-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 130, 0, 0.8);
+            background: #e67300; /* Slightly darker orange on hover */
+        }
+        .session-btn:active {
+            color: #000;
+            font-weight: bold;
+            transform: translateY(0);
         }
         @keyframes glowing {
             0% { background-position: 0 0; }
@@ -435,7 +466,7 @@
             padding: 0.5rem 1.5rem;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            min-width: 300px;
+            minimal-width: 300px;
             letter-spacing: 1px;
         }
         .counter-label {
@@ -447,7 +478,7 @@
         /* Page Title Styling (to replace the removed header) */
         .page-title {
             text-align: center;
-            margin: 0 0 2rem 0;
+            margin: 70px 0 2rem 0; /* Added top margin to avoid overlapping with buttons */
             color: #00205B;
             font-size: 2rem;
             font-weight: bold;
@@ -467,12 +498,17 @@
                 margin-bottom: 1rem;
                 position: static;
             }
-            .home-btn {
+            .home-btn, .session-btn {
                 position: fixed;
                 top: 10px;
-                right: 10px;
                 padding: 10px 16px;
                 font-size: 0.9rem;
+            }
+            .home-btn {
+                right: 10px;
+            }
+            .session-btn {
+                left: 10px;
             }
             .nav-links {
                 flex-direction: row;
@@ -487,7 +523,7 @@
                 font-size: 0.85rem;
             }
             .page-title {
-                margin-top: 60px; /* Make space for the button */
+                margin-top: 60px; /* Make space for the buttons */
                 font-size: 1.5rem;
             }
         }
@@ -511,6 +547,10 @@
                 font-size: 1.3rem;
                 margin-top: 50px;
             }
+            .home-btn, .session-btn {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
         }
         @media (max-width: 480px) {
             .nav-button {
@@ -530,20 +570,28 @@
             .counter-label {
                 font-size: 1rem;
             }
+            .home-btn, .session-btn {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
             .home-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
                 right: 5px;
-                top: 5px;
+            }
+            .session-btn {
+                left: 5px;
             }
             .page-title {
                 font-size: 1.1rem;
                 margin-top: 45px;
+                padding: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- New Session Button (Fixed at Top Left) -->
+    <div class="session-btn">Session 1_Week 6</div>
+
     <!-- Enhanced Glowing Home Button (Fixed at Top Right) -->
     <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-btn">Academic Literacy Home</a>
 
@@ -695,7 +743,7 @@
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
                             <div class="question-card">
-                                <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.e., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
+                                <h4 class="question-title">2. How does the author construct the identities of South African youth and Swedish partners, and what persuasive purpose does this serve? Look at how young people are described (e.g., "courage, energy, creativity") and how Sweden is positioned as a supportive ally. What assumptions or values are embedded in these portrayals?</h4>
                                 <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
                             </div>
                             <div class="question-card">
